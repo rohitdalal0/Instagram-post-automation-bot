@@ -1,6 +1,7 @@
 from selenium import webdriver
 import requests, random
 import time
+import os
 from os import path, listdir, unlink
 import shutil
 from bs4 import BeautifulSoup
@@ -25,7 +26,7 @@ class Chrome:
         def email():
             try:
                 user = chrome.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input')
-                user.send_keys(' Email ')
+                user.send_keys('rohitdalal4041@gmail.com')
             except Exception:
                 time.sleep(3)
                 email()
@@ -35,7 +36,7 @@ class Chrome:
         def password():
             try:
                 password = chrome.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input')
-                password.send_keys(' Password ')
+                password.send_keys('rohit4041$')
             except Exception:
                 time.sleep(3)
                 password()
@@ -64,7 +65,7 @@ class Chrome:
 
     @staticmethod
     def image():
-        api = f'https://api.unsplash.com/photos/search?query=programming-or-coding&resolution=1500&orientation=landscape&client_id=8c8b90902c54cea3f2f2cab40bdb8f20312086c3342fe83428f930c72e6e2219&page={random.randint(1,10)}&w=1500&dpi=2'  # This is pixel size 1500, 1080,400,200
+        api = f'https://api.unsplash.com/photos/search?query=programming-or-hacking&resolution=1500&orientation=landscape&client_id=8c8b90902c54cea3f2f2cab40bdb8f20312086c3342fe83428f930c72e6e2219&page={random.randint(1,10)}&w=1500&dpi=2'  # This is pixel size 1500, 1080,400,200
         res = requests.get(api).json()
         if 'error' in res: print(res['error'])
 
@@ -89,7 +90,7 @@ class Chrome:
 
     def auto(self, chrome):
         # this is click on instagram side page
-        auto.moveTo(x=332, y=350, duration=.1)
+        auto.moveTo(x=332, y=350, duration=.2)
         auto.click()
         time.sleep(5)
 
@@ -98,13 +99,31 @@ class Chrome:
         time.sleep(3)
 
         # It's moving to click mobile view
-        auto.moveTo(x=541, y=146, duration=.1)
+        auto.moveTo(x=541, y=146, duration=.2)
         time.sleep(1)
         auto.click()
-        time.sleep(3)
+
+        # waiting until page not load
+        def until_page_not_load():
+            try:
+                chrome.find_element_by_class_name('_1SP8R')
+            except Exception:
+                time.sleep(3)
+                until_page_not_load()
+        until_page_not_load()
 
         auto.press('f5')
-        time.sleep(5)
+        time.sleep(1)
+
+        # wating until page not load
+        def until_page_not_load():
+            try:
+                chrome.find_element_by_class_name('_1SP8R')
+            except Exception:
+                time.sleep(3)
+                until_page_not_load()
+        until_page_not_load()
+
 
         # press keys to hide 'Dev tool'
         auto.hotkey('shift', 'ctrl', 'j')
