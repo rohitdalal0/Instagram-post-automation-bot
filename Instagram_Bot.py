@@ -25,7 +25,7 @@ class Chrome:
         def email():
             try:
                 user = chrome.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input')
-                user.send_keys('rohitdalal4041@gmail.com')
+                user.send_keys(' Email ')
             except Exception:
                 time.sleep(3)
                 email()
@@ -35,7 +35,7 @@ class Chrome:
         def password():
             try:
                 password = chrome.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input')
-                password.send_keys('rohit4041$')
+                password.send_keys(' Password ')
             except Exception:
                 time.sleep(3)
                 password()
