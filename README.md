@@ -2,3 +2,5 @@
 Now schedule you Instagram post through bot.
   * Put your email addrress.
   * Put your password.
+
+Leave rest on me
